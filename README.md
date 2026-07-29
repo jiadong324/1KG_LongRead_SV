@@ -10,6 +10,7 @@ The SV control set has been used to identify potential pathogenic variants and n
 
 <div align=left><img width=20% height=20% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/HGSVC_logo.png"/> <img width=30% height=30% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/hprc_log.png"/><img width=40% height=40% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/1000G-ONT.png"/></div> 
 
+
 <div align=left><img width=100% height=100% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/Fig1_Samples.png"/> </div>
 
 ## Genomes
