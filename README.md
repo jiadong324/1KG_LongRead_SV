@@ -129,4 +129,59 @@ Note that the missing genotype in the final VCF only suggests there is no confid
 For each integrated SV, we also kept the allele breakpoint position (FORMAT/APOS) and length (FORMAT/AL) from each sample. 
 BCFtools (v1.16) plugin function fill-tags is used to calculate the statistics for each SV site, including allele frequency, minor allele frequency, etc (https://samtools.github.io/bcftools/howtos/plugin.fill-tags.html). 
 
+## Phenome-wide associations
 
+We selected 2,752 high-impact SVs and genotyped them in 230 thousands AoU short-read samples to identify SV-disease associations. 
+The WDL pipeline for genotyping and phenotype testing is available at [AoU_WDL](https://github.com/EichlerLab/AoU_WDL).
+
+### Annotation
+
+We selected potential high-impact SVs from callset **GRCh38_INSDEL_1218_wAF.vcf.gz:**. 
+SVs were annotated using the comREG pipeline adapted from a previously published framework, with minor modifications (https://github.com/EichlerLab/asap, v1.1.0). 
+Briefly, SVs aligned to GRCh38 were intersected with CDS and UTR from the same annotation file used for TR sites annotation. Gene annotations were further validated using the RefSeq database through [AnnotSV (v3.4)](https://github.com/lgmgeo/AnnotSV). 
+Regulatory regions (denoted as REG in this study) were annotated using datasets from UCSC genome browser, including ENCODE cCREs (candidate cis-regulatory elements), ORegAnno, GeneHancer, H3K27ac, H3K4me1, and H3K4me3, together with brain-derived epigenomic profiles [Sui et al. 2026](https://www.nature.com/articles/s41467-026-68378-4). 
+Additional functional annotations included ENCODE TF clusters, UCSC noncoding RNA tracks (tRNA, snRNA, lincRNA, and sno/miRNA), and repetitive regions (UCSC Segmental Duplications, RepeatMasker, Simple Repeats, and Tandem Repeats–Platinum).
+
+To further evaluate potential functional impact, we incorporated the noncoding constraint Gnocchi score from gnomAD (Chen et al. 2024) and the CADD-SV score (v1.1.2) (Kleinert and Kircher 2022). 
+Population SV frequencies from 63,046 unrelated short-read genomes were assessed using gnomAD SVs (gnomad.v4.1.sv.non_neuro_controls.sites.vcf.gz, https://gnomad.broadinstitute.org/data#v4-structural-variants). 
+Comparison with the gnomAD SV callset was performed using Truvari (v5.2.0) with the command ```truvari bench -c {gnomad.v4.1.INSDEL50.non_neuro_controls.sites.vcf.gz} -b {collapsedSV.vcf.gz} --pctsize 0.5 --pctseq 0.0 --pctovl 0.5 --sizefilt 50 --sizemax 100000 -o {output}```
+
+### Genotyping
+
+SVs are first evaluated with matched 1KG SR data. The SV with F1-score>=0.8 are further genotyped in AoU short-read samples with the pipeline in [AoU_WDL](https://github.com/EichlerLab/AoU_WDL)
+
+### Association testing
+
+We applied firth regression model in PLINK2 to conduct PheWAS analysis with covariant, phenotype and genotype files as input. 
+
+For biallelic SVs and flanking SNPs, the variant genotypes are converted to PLINK format via ```plink2 --vcf variant.vcf --make-pgen --out variant```.
+The linkage R2 values between every flanking SNP and SV is calculated via ```plink2 --pfile variant --r2 --out svid_ld --ld-window-r2 0 --ld-snp svid```. 
+For phenotype testing, variants (SNPs and SVs) are tested separately using samples with valid genotypes (0/0, 1/0, 0/1 and 1/1) because SVs are not always successfully genotyped in the same set of samples. 
+The covariant file contains 12 variables, including age, sex, and first ten principal components (PC1-PC10) derived from ancestry inference. 
+
+Phecodes are derived from ICD-10 codes in participant electronic health records. We excluded phenotypes that have less than 20 cases. 
+With this filtering, the number of tested phenotypes reduced from 1,846 to 1,621, covering 17 different major groups, such as infectious diseases, neoplasms, neurological, etc. 
+The samples’ conditions are coded as ‘1’, ‘2’ or ‘NA’ for control, case and failure in ICD-10 codes conversion, respectively. 
+Note that a case should have at least two occurrences of phecode while others are considered as control. 
+
+To test the associations, we excluded related samples and used command ```plink2 --threads 16 --geno-counts --pfile variant --out variant --pheno samples_pheno.tsv --covar samples_covar.tsv --covar-variance-standardize --covar-name age,sex,pc1,pc2,pc3,..,pc10 --glm firth hide-covar cols=+nobs,+a1countcc,+gcountcc’```. 
+The parameters ```cols=+nobs,+a1countcc,+gcountcc``` summarizes the SV genotypes in cases (CASE) and controls (CTRL). The genotype counts are in the output columns CASE_NON_A1_CT, CASE_HET_A1_CT, CASE_HOM_A1_CT, CTRL_NON_A1_CT, CTRL_HET_A1_CT and CTRL_HOM_A1_CT. 
+To reduce false positives, we only reported associations in which at least five of the case samples carry the variant (i.e. #CASE_HET_A1_CT+#CASE_HOM_A1_CT>=5) and observed in at least 200,000 samples (OBS_CT>=200000).
+
+### Association fine-mapping
+
+To conduct variant fine-mapping, we specifically assessed the SV and all SNPs within a 100kbp range with an allele count of at least 100 and a min case count of at least 5 for the associated phenotype. 
+A genotype file and covariate file are created for further fine-mapping. The genotype file contains the SV genotypes from Locityper and DRAGEN genotypes of nearby filtered SNPs among 230 thousand samples. 
+The covariate file includes the phenotype as one column and other columns use the same covariates mentioned above (i.e., age, sex and PC1-PC10). 
+
+The R package [susieR](https://stephenslab.github.io/susieR/) (Zou et al. 2022) is used to identify leading associations. 
+It takes the genotypes of the variants (i.e. SV and SNP) and covariates as input and tests against a specific phenotype. 
+The WDL pipeline for variant fine-mapping is available at https://github.com/EichlerLab/AoU_WDL/tree/main/susie. 
+The two major outputs contain the percentage of credible sets and posterior inclusion probability (PIP) for each variant. 
+The value for credible set (CS) suggests the probability that at least one variant in this set is causal. 
+The highest-PIP variant is likely to be the leading variant compared to other variants in the CS. 
+
+Based on CS and PIP, we classified one SV-disease association into the following different situations:
+
+- SV is the leading variant. 1) Only one CS; 2) PIP of SV is the highest among variants in the CS. 
+- SV is an independent signal. 1) More than one CS; 2) SV is leading in one of the CS; 3) SV is not in LD with leading variants in other CS (R2<0.1).
