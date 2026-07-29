@@ -12,7 +12,7 @@ The SV control set has been used to identify potential pathogenic variants and n
 
 ## Genomes
 
-<div align=left><img width=50% height=50% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/Fig1_Samples.png"/> </div>
+<div align=left><img width=100% height=100% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/Fig1_Samples.png"/> </div>
 
 The table below lists the source of 1,218 genomes used to create the callset in Lin et al. Note that the number below counts for the unique genomes.
 HG002 and HG005 are included as part of the HPRC dataset. We also included NA12877 and NA12878. NA12878 is also one of the genomes sequenced by GIAB and HGSVC. 
