@@ -154,6 +154,7 @@ SVs are first evaluated with matched 1KG SR data. The SV with F1-score>=0.8 are 
 
 We applied firth regression model in PLINK2 to conduct PheWAS analysis with covariant, phenotype and genotype files as input. 
 
+#### Prepare inputs
 For biallelic SVs and flanking SNPs, the variant genotypes are converted to PLINK format via ```plink2 --vcf variant.vcf --make-pgen --out variant```.
 The linkage R2 values between every flanking SNP and SV is calculated via ```plink2 --pfile variant --r2 --out svid_ld --ld-window-r2 0 --ld-snp svid```. 
 For phenotype testing, variants (SNPs and SVs) are tested separately using samples with valid genotypes (0/0, 1/0, 0/1 and 1/1) because SVs are not always successfully genotyped in the same set of samples. 
@@ -164,6 +165,7 @@ With this filtering, the number of tested phenotypes reduced from 1,846 to 1,621
 The samples’ conditions are coded as ‘1’, ‘2’ or ‘NA’ for control, case and failure in ICD-10 codes conversion, respectively. 
 Note that a case should have at least two occurrences of phecode while others are considered as control. 
 
+#### Testing
 To test the associations, we excluded related samples and used command ```plink2 --threads 16 --geno-counts --pfile variant --out variant --pheno samples_pheno.tsv --covar samples_covar.tsv --covar-variance-standardize --covar-name age,sex,pc1,pc2,pc3,..,pc10 --glm firth hide-covar cols=+nobs,+a1countcc,+gcountcc’```. 
 The parameters ```cols=+nobs,+a1countcc,+gcountcc``` summarizes the SV genotypes in cases (CASE) and controls (CTRL). The genotype counts are in the output columns CASE_NON_A1_CT, CASE_HET_A1_CT, CASE_HOM_A1_CT, CTRL_NON_A1_CT, CTRL_HET_A1_CT and CTRL_HOM_A1_CT. 
 To reduce false positives, we only reported associations in which at least five of the case samples carry the variant (i.e. #CASE_HET_A1_CT+#CASE_HOM_A1_CT>=5) and observed in at least 200,000 samples (OBS_CT>=200000).
