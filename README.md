@@ -150,7 +150,7 @@ Comparison with the gnomAD SV callset was performed using Truvari (v5.2.0) with 
 
 SVs are first evaluated with matched 1KG SR data. The SV with F1-score>=0.8 are further genotyped in AoU short-read samples with the pipeline in [AoU_WDL](https://github.com/EichlerLab/AoU_WDL)
 
-### Association testing
+### Associations
 
 We applied firth regression model in PLINK2 to conduct PheWAS analysis with covariant, phenotype and genotype files as input. 
 
