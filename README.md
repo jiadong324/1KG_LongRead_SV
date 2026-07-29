@@ -123,6 +123,7 @@ Truvari (v5.2.0) was used to create the non-redundant SV set for both references
 Briefly, different alleles at the same SV site were collapsed if they share minimum 90% sequence similarity and 90% allele size similarity. 
 The calls with the highest quality predicted by BoostSV were used to represent each collapsed SV site. 
 Moreover, this integration only considered INS/DEL ranging from 50bp to 100,000bp. 
+
 We then filled the missing genotypes ‘./.’ with reference genotypes ‘0|0’, ‘0|.’ and ‘.|0’ for each genome based on callable regions. 
 Note that the missing genotype in the final VCF only suggests there is no confident read or assembly alignments. 
 For each integrated SV, we also kept the allele breakpoint position (FORMAT/APOS) and length (FORMAT/AL) from each sample. 
