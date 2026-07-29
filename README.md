@@ -31,19 +31,19 @@ NA12877 is sequenced by IB-ONT but we used the assembly and data published in [D
 
 ### Individual genomes
 
-Multiple caller merged callset for each genome. Please check the index file for download.
+Multiple caller merged callset for each genome. Please check the index file (TBA) for download.
 
 ### Integrated callset
 
-We provide both GRCh38 and T2T-CHM13 callsets (zenodo link) for 293 HPRC+HGSVC genomes and 1,218 genomes.
+We provide both GRCh38 and T2T-CHM13 callsets (zenodo link, TBA) for 293 HPRC+HGSVC genomes and 1,218 genomes.
 
-**CHM13_INSDEL_HGSVC_HPRC.vcf.gz:** Integrated SVs from HGSVC/HPRC genomes
+**CHM13_INSDEL_HGSVC_HPRC_wAF.vcf.gz:** Integrated SVs from HGSVC/HPRC genomes with estimated allele frequency.
 
-**CHM13_INSDEL_1218.vcf.gz:** Integrated SVs from all dataset containing 1,218 genomes
+**CHM13_INSDEL_1218_wAF.vcf.gz:** Integrated SVs from all dataset containing 1,218 genomes with estimated allele frequency.
 
-**GRCh38_INSDEL_HGSVC_HPRC.vcf.gz:** Integrated SVs from HGSVC genomes
+**GRCh38_INSDEL_HGSVC_HPRC_wAF.vcf.gz:** Integrated SVs from HGSVC genomes with estimated allele frequency.
 
-**GRCh38_INSDEL_1218.vcf.gz:** Integrated SVs from all dataset containing 1,218 genomes
+**GRCh38_INSDEL_1218_wAF.vcf.gz:** Integrated SVs from all dataset containing 1,218 genomes with estimated allele frequency.
 
 ## Genome assembly
 
@@ -63,7 +63,7 @@ Briefly, this pipeline used shasta to make the haploid assembly and create the p
 Yak (v0.1) and QUAST (v5.2.1) were used to assess the QV and contig N50 of the pseudo-phased assembly. The QV was calculated with Illumina short-read data.
 
 
-## Per genome discovery
+## SV discovery
 
 ### Alignment
 HiFi reads are aligned with [pbmm2](https://github.com/PacificBiosciences/pbmm2) v1.13.1 ‘--preset HiFi’. 
@@ -89,12 +89,13 @@ Minimap2 v2.28 is used to align assembly to both references. The alignment pipel
 | SVision     | HiFi, ONT  | v1.4    |
 | SVision-pro | HiFi, ONT  | v2.3    |
 
-### Cross-caller SV integration
+### Per genome SV
 
 For each genome, we prioritize the PAV calling results and identify SVs supported by at least one another caller with [Truvari (v5.2.0)](https://github.com/acenglish/truvari). 
 The pipeline is ```rules/intra_sample_collapse.smk```. The output of this pipeline is a multi-caller integrated VCF used the PAV reported breakpoint, sv length, phased genotype etc.
+We then run [BoostSV](https://github.com/jiadong324/BoostSV) on the multi-caller integrated VCF for each genome.
 
-We used the same annotation as [Logsdon et al. Nature 2025](https://www.nature.com/articles/s41586-025-09140-6) to exclude SVs inside complex regions, gaps, etc. 
+We also used the same annotation as [Logsdon et al. Nature 2025](https://www.nature.com/articles/s41586-025-09140-6) to exclude SVs inside complex regions, gaps, etc. 
 Briefly, these regions include UCSC gaps and centromere on GRCh38. 
 For T2T-CHM13, complex regions include centromere, acrocentric p-arms, satellite regions except for monomeric satellite.
 
@@ -108,5 +109,23 @@ Tandem repeat catalogs for GRCh38 and T2T-CHM13 can be found [here](https://zeno
 | TRGT   | HiFi       | v1.4.1  | HPRC, HGSVC, UW-ONT | Tandem repeats |
 | vamos  | Assembly   | v2.1.5  | HPRC, HGSVC, UW-ONT | Tandem repeats |
 
+
+### Cohort-level integration
+
+#### Callable regions
+We first defined the callable regions for each genome. HGSVC/HPRC and 1KG-ONT callable regions were created by PAV based on the assembly to reference alignment. 
+For IB-ONT genomes, we splitted the PMDV phased BAM into two read sets. The callable regions for each haplotype were created by merging each read set (>= 3 reads) into non–overlapping intervals with BEDtools merge ‘-d 500’. 
+
+#### Create callset
+
+The non-redundant set integrated SVs from HPRC, HGSVC, UW-ONT and IB-ONT genomes with coverage >= 15x and read N50 >=15 kbp. 
+Truvari (v5.2.0) was used to create the non-redundant SV set for both references with ‘--pctseq 0.90 –pctsize 0.90 –refdist 500 –keep common’. 
+Briefly, different alleles at the same SV site were collapsed if they share minimum 90% sequence similarity and 90% allele size similarity. 
+The calls with the highest quality predicted by BoostSV were used to represent each collapsed SV site. 
+Moreover, this integration only considered INS/DEL ranging from 50bp to 100,000bp. 
+We then filled the missing genotypes ‘./.’ with reference genotypes ‘0|0’, ‘0|.’ and ‘.|0’ for each genome based on callable regions. 
+Note that the missing genotype in the final VCF only suggests there is no confident read or assembly alignments. 
+For each integrated SV, we also kept the allele breakpoint position (FORMAT/APOS) and length (FORMAT/AL) from each sample. 
+BCFtools (v1.16) plugin function fill-tags is used to calculate the statistics for each SV site, including allele frequency, minor allele frequency, etc (https://samtools.github.io/bcftools/howtos/plugin.fill-tags.html). 
 
 
