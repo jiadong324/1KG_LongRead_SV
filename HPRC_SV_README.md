@@ -1,9 +1,8 @@
 # HPRC R2 SV
 
-This is a readme file of haplotype phased SVs for HPRC R2 [Lucas et al.](https://www.biorxiv.org/content/10.64898/2026.07.21.739710v1). SVs are seperated by INS/DEL and INV. 
-SVs are for each genome are available at https://human-pangenomics.s3.amazonaws.com/index.html?prefix=submissions/759B21AD-0ED8-4640-A433-7C92A57EA3D3--UW_EEE_SV_Calls/
+This is a readme file of haplotype phased SVs for HPRC R2 ([Lucas et al.](https://www.biorxiv.org/content/10.64898/2026.07.21.739710v1)). 
+SVs are seperated by INS/DEL and INV. They are available at https://human-pangenomics.s3.amazonaws.com/index.html?prefix=submissions/759B21AD-0ED8-4640-A433-7C92A57EA3D3--UW_EEE_SV_Calls/.
 If you have any issues please contact jdlin@uw.edu and ee3@uw.edu.
-
 
 ## 08-26-2025 updates
 
