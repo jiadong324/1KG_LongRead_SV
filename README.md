@@ -3,7 +3,8 @@
 This repository contains workflows and analysis scripts for creating a SV control set from 1725 1KG long-read genomes. 
 These genomes are sequenced by HPRC ([Lucas et al. Biorxiv 2026](https://www.biorxiv.org/content/10.64898/2026.07.21.739710v1)), 
 HGSVC ([Logsdon et al. Nature 2025](https://www.nature.com/articles/s41586-025-09140-6)), UW-ONT and IB-ONT. 
-The UW-ONT sequenced a total of 500 genomes, 400 are novel and 100 genomes were published by [Gustafson et al. 2024](https://genome.cshlp.org/content/34/11/2061).
+
+The UW-ONT sequenced a total of 500 genomes, 400 are novel and 100 genomes were published by [Gustafson et al. 2025](https://genome.cshlp.org/content/34/11/2061).
 The IB-ONT genomes are published by Siegfried Schloissnig et.al. ([Nature 2025](https://www.nature.com/articles/s41586-025-09290-7)).
 The SV control set has been used to identify potential pathogenic variants and new SV-disease associations in biobanks.
 
@@ -57,7 +58,7 @@ With latest Verkko (v2.2.1), we resolved previous genomes with large unassigned 
 The rest of the HGSVC genomes were not reassembled. 
 
 ### UW-ONT
-Consistent with our previous publication (Gustafson et al.) on the first 100 genomes, the NAPU pipeline of the same version is used to build the assembly for R9 and R10 data. 
+Consistent with our previous publication ([Gustafson et al. 2025](https://genome.cshlp.org/content/34/11/2061)) on the first 100 genomes, the NAPU pipeline of the same version is used to build the assembly for R9 and R10 data. 
 Briefly, this pipeline used shasta to make the haploid assembly and create the pseudo-haplotypes with hapdup. 
 Yak (v0.1) and QUAST (v5.2.1) were used to assess the QV and contig N50 of the pseudo-phased assembly. The QV was calculated with Illumina short-read data.
 
