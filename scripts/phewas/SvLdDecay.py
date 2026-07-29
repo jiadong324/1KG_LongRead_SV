@@ -30,7 +30,7 @@ new_rc_params = {'text.usetex': False,
 mpl.rcParams.update(new_rc_params)
 
 # plt.rcParams['svg.fonttype'] = 'none'
-df = pd.read_csv(f'{VOL28}/SVREF/locityper_inAoU/aou_sr_gts/phewas_results/ASCC1_chr10-72100639-DEL-2740_all_firth_results_SV_snps_minAC100.tsv', sep='\t')
+df = pd.read_csv('ASCC1_chr10-72100639-DEL-2740_all_firth_results_SV_snps_minAC100.tsv', sep='\t')
 
 # Keep text as real, editable text elements (not outlined paths) in exported SVGs
 plt.rcParams['svg.fonttype'] = 'none'

@@ -170,6 +170,10 @@ To test the associations, we excluded related samples and used command ```plink2
 The parameters ```cols=+nobs,+a1countcc,+gcountcc``` summarizes the SV genotypes in cases (CASE) and controls (CTRL). The genotype counts are in the output columns CASE_NON_A1_CT, CASE_HET_A1_CT, CASE_HOM_A1_CT, CTRL_NON_A1_CT, CTRL_HET_A1_CT and CTRL_HOM_A1_CT. 
 To reduce false positives, we only reported associations in which at least five of the case samples carry the variant (i.e. #CASE_HET_A1_CT+#CASE_HOM_A1_CT>=5) and observed in at least 200,000 samples (OBS_CT>=200000).
 
+The Manhattan plot is created by ```scripts/phewas/plot_phewas.py```, which takes the plink test results as input.
+
+To view LD of SVs and nearby SNPs, we plot the LD decay (```scripts/phewas/SvLdDecay.py```) and variant associations (```scripts/phewas/SvLdAssoc.py```).
+
 ### Association fine-mapping
 
 To conduct variant fine-mapping, we specifically assessed the SV and all SNPs within a 100kbp range with an allele count of at least 100 and a min case count of at least 5 for the associated phenotype. 

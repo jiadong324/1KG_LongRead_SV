@@ -29,7 +29,7 @@ new_rc_params = {'text.usetex': False,
 }
 mpl.rcParams.update(new_rc_params)
 
-df = pd.read_csv(f'{VOL28}/SVREF/locityper_inAoU/aou_sr_gts/phewas_results/INSR_chr19-7258352-DEL-930_all_firth_results_SV_snps_minAC100.tsv', sep='\t')
+df = pd.read_csv('INSR_chr19-7258352-DEL-930_all_firth_results_SV_snps_minAC100.tsv', sep='\t')
 
 sv_id = 'chr19-7258352-DEL-930'
 gwas_snp_id = 'chr19_7257979_C_G'
@@ -113,7 +113,7 @@ ax.legend(handles=legend_elements, loc='upper left', fontsize=8.5, framealpha=0.
 
 ax.grid(alpha=0.2, zorder=0)
 plt.tight_layout()
-plt.savefig(f'{VOL28}/SVREF/locityper_inAoU/aou_sr_gts/phewas_results/INSR_snp_plink_chr19-7258352-DEL-930_pval.png', dpi=300)
-plt.savefig(f'{VOL28}/SVREF/locityper_inAoU/aou_sr_gts/phewas_results/INSR_snp_plink_chr19-7258352-DEL-930_pval.svg')
+plt.savefig('INSR_snp_plink_chr19-7258352-DEL-930_pval.png', dpi=300)
+plt.savefig('INSR_snp_plink_chr19-7258352-DEL-930_pval.svg')
 print("saved")
 plt.show()
