@@ -346,11 +346,9 @@ def selected_chrom_ideogram():
 
 
 def main():
+    all_var_ideogram()
 
-    # sd_ideogram()
-    # all_var_ideogram()
-
-    selected_chrom_ideogram()
+    # selected_chrom_ideogram()
 
 if __name__ == '__main__':
     main()

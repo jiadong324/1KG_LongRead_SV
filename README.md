@@ -1,12 +1,11 @@
 # 1KG_LongRead_SV
 
-This repository contains workflows and analysis scripts for creating a SV control set from 1725 1KG long-read genomes. 
+This repository contains workflows and analysis scripts for creating a SV control set from 1,725 1KG long-read genomes. 
 These genomes are sequenced by HPRC ([Lucas et al. Biorxiv 2026](https://www.biorxiv.org/content/10.64898/2026.07.21.739710v1)), 
 HGSVC ([Logsdon et al. Nature 2025](https://www.nature.com/articles/s41586-025-09140-6)), UW-ONT and IB-ONT. 
 
 The UW-ONT sequenced a total of 500 genomes, 400 are novel and 100 genomes were published by [Gustafson et al. 2025](https://genome.cshlp.org/content/34/11/2061).
 The IB-ONT genomes are published by Siegfried Schloissnig et.al. ([Nature 2025](https://www.nature.com/articles/s41586-025-09290-7)).
-The SV control set has been used to identify potential pathogenic variants and new SV-disease associations in biobanks.
 
 <div align=left><img width=20% height=20% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/HGSVC_logo.png"/> <img width=30% height=30% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/hprc_log.png"/><img width=40% height=40% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/1000G-ONT.png"/></div> 
 
@@ -15,7 +14,10 @@ The SV control set has been used to identify potential pathogenic variants and n
 
 ## Genomes
 
-The table below lists the source of 1,218 genomes used to create the callset in Lin et al. Note that the number below counts for the unique genomes.
+The table below lists the source of 1,218 genomes used to create the callset in Lin et al. 
+Note that the number below counts for the unique genomes.
+The SVs detected from 1,218 genomes have been used to identify potential pathogenic variants and new SV-disease associations in biobanks.
+
 
 HG002 and HG005 are included as part of the HPRC dataset. We also included NA12877 and NA12878. NA12878 is also one of the genomes sequenced by GIAB and HGSVC. 
 NA12877 is sequenced by IB-ONT but we used the assembly and data published in [David Porubsky et al. Nature 2025](https://www.nature.com/articles/s41586-025-08922-2)
