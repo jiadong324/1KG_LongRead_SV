@@ -14,7 +14,7 @@ The IB-ONT genomes are published by Siegfried Schloissnig et.al. ([Nature 2025](
 
 ## Genomes
 
-The table below lists the source of 1,218 genomes used to create the callset in Lin et al. 
+The table below lists the source of 1,218 genomes used to create the callset in Lin et al (**coming soon**). 
 Note that the number below counts for the unique genomes.
 The SVs detected from 1,218 genomes have been used to identify potential pathogenic variants and new SV-disease associations in biobanks.
 
