@@ -1,6 +1,6 @@
 # 1KG_LongRead_SV
 
-This repository contains workflows and analysis scripts for creating SV control set from 1KG long-read genomes. 
+This repository contains the release of SV callset from 1KG long-read genomes. 
 Until now, there are 1,725 sequenced genomes but in different qualities, including HPRC ([Lucas et al. Biorxiv 2026](https://www.biorxiv.org/content/10.64898/2026.07.21.739710v1)), 
 HGSVC ([Logsdon et al. Nature 2025](https://www.nature.com/articles/s41586-025-09140-6)), UW-ONT and IB-ONT ([Schloissnig et al. Nature 2025](https://www.nature.com/articles/s41586-025-09290-7)). 
 
@@ -31,6 +31,8 @@ NA12877 is sequenced by IB-ONT but we used the assembly and data published in [D
 
 
 ## SV callset
+
+Check [PanSV](https://github.com/jiadong324/PanSV) for detailed SV detection pipelines. 
 
 ### Individual genomes
 
