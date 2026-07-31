@@ -1,11 +1,11 @@
 # 1KG_LongRead_SV
 
-This repository contains workflows and analysis scripts for creating a SV control set from 1,725 1KG long-read genomes. 
-These genomes are sequenced by HPRC ([Lucas et al. Biorxiv 2026](https://www.biorxiv.org/content/10.64898/2026.07.21.739710v1)), 
-HGSVC ([Logsdon et al. Nature 2025](https://www.nature.com/articles/s41586-025-09140-6)), UW-ONT and IB-ONT. 
+This repository contains workflows and analysis scripts for creating SV control set from 1KG long-read genomes. 
+Until now, there are 1,725 sequenced genomes but in different qualities, including HPRC ([Lucas et al. Biorxiv 2026](https://www.biorxiv.org/content/10.64898/2026.07.21.739710v1)), 
+HGSVC ([Logsdon et al. Nature 2025](https://www.nature.com/articles/s41586-025-09140-6)), UW-ONT and IB-ONT ([Schloissnig et al](https://www.nature.com/articles/s41586-025-09290-7)). 
 
-The UW-ONT sequenced a total of 500 genomes, 400 are novel and 100 genomes were published by [Gustafson et al. 2025](https://genome.cshlp.org/content/34/11/2061).
-The IB-ONT genomes are published by Siegfried Schloissnig et.al. ([Nature 2025](https://www.nature.com/articles/s41586-025-09290-7)).
+The UW-ONT sequenced a total of 500 genomes with high coverage and long read length. 400 are novel and the first 100 genomes were published by [Gustafson et al. 2025](https://genome.cshlp.org/content/34/11/2061).
+Comparably, the 1,019 IB-ONT genomes are sequenced in lower coverage and shorter read length.
 
 <div align=left><img width=20% height=20% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/HGSVC_logo.png"/> <img width=30% height=30% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/hprc_log.png"/><img width=40% height=40% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/1000G-ONT.png"/></div> 
 
