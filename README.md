@@ -32,7 +32,7 @@ NA12877 is sequenced by IB-ONT but we used the assembly and data published in [D
 
 ## SV callset
 
-Check [PanSV](https://github.com/jiadong324/PanSV) for detailed SV detection pipelines. 
+Check [SV calling](https://github.com/jiadong324/PanSV) for detailed SV detection pipelines. 
 SV and TR related analysis scripts is in ```./SVs``` and ```./TR```, respectively. 
 
 ### Individual genomes
