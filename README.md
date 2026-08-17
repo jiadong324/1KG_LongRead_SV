@@ -32,8 +32,7 @@ NA12877 is sequenced by IB-ONT but we used the assembly and data published in [D
 
 ## SV callset
 
-Check [SV calling](https://github.com/jiadong324/PanSV) for SV detection details. The callset can be viewed at UCSC track ([1KG Lin 1218](https://genome-test.gi.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=longReadVariants)) and gnomad-LR.
-SV and TR related analysis scripts is in ```./SVs``` and ```./TR```, respectively. 
+Check [SV calling](https://github.com/jiadong324/PanSV) for SV detection details. The callset can be viewed at UCSC track ([1KG Lin 1218](https://genome-test.gi.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=longReadVariants)) and gnomad-LR. 
 
 ### Individual genomes
 
@@ -50,6 +49,9 @@ We provide both GRCh38 and T2T-CHM13 callsets (zenodo link, TBA) for 293 HPRC+HG
 **GRCh38_INSDEL_HGSVC_HPRC_wAF.vcf.gz:** Integrated SVs from HGSVC genomes with estimated allele frequency.
 
 **GRCh38_INSDEL_1218_wAF.vcf.gz:** Integrated SVs from all dataset containing 1,218 genomes with estimated allele frequency.
+
+SV and TR related analysis scripts is in ```./SVs``` and ```./TR```, respectively.
+
 
 ## Genome assembly
 
