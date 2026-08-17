@@ -5,7 +5,7 @@ Until now, there are 1,725 sequenced genomes but in different qualities, includi
 HGSVC ([Logsdon et al. Nature 2025](https://www.nature.com/articles/s41586-025-09140-6)), UW-ONT and IB-ONT ([Schloissnig et al. Nature 2025](https://www.nature.com/articles/s41586-025-09290-7)). 
 
 The UW-ONT sequenced a total of 500 genomes with high coverage and long read length. 400 are novel and the first 100 genomes were published by [Gustafson et al. Genome Research 2025](https://genome.cshlp.org/content/34/11/2061).
-Comparably, the 1,019 IB-ONT genomes are sequenced in lower coverage and shorter read length.
+Comparably, the 1,019 BI-ONT genomes are sequenced in lower coverage and shorter read length.
 
 <div align=left><img width=20% height=20% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/HGSVC_logo.png"/> <img width=30% height=30% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/hprc_log.png"/><img width=40% height=40% src="https://github.com/jiadong324/1KG_LongRead_SV/blob/main/images/1000G-ONT.png"/></div> 
 
@@ -26,13 +26,13 @@ NA12877 is sequenced by IB-ONT but we used the assembly and data published in [D
 |---------|---------|---------------|
 | HPRC    | 232     | HiFi, UL-ONT  |
 | HGSVC   | 61      | HiFi, UL-ONT  |
-| 1KG-ONT | 480     | ONT (R9, R10) |
-| IB-ONT  | 445     | ONT (R9)      |
+| UW-ONT  | 480     | ONT (R9, R10) |
+| BI-ONT  | 445     | ONT (R9)      |
 
 
 ## SV callset
 
-Check [SV calling](https://github.com/jiadong324/PanSV) for SV detection details. 
+Check [SV calling](https://github.com/jiadong324/PanSV) for SV detection details. The callset can be viewed at UCSC track ([1KG Lin 1218](https://genome-test.gi.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=longReadVariants)) and gnomad-LR.
 SV and TR related analysis scripts is in ```./SVs``` and ```./TR```, respectively. 
 
 ### Individual genomes
