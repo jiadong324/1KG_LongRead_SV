@@ -20,7 +20,7 @@ The SVs detected from 1,218 genomes have been used to identify potential pathoge
 
 
 HG002 and HG005 are included as part of the HPRC dataset. We also included NA12877 and NA12878. NA12878 is also one of the genomes sequenced by GIAB and HGSVC. 
-NA12877 is sequenced by IB-ONT but we used the assembly and data published in [David Porubsky et al. Nature 2025](https://www.nature.com/articles/s41586-025-08922-2)
+NA12877 is sequenced by BI-ONT but we used the assembly and data published in [David Porubsky et al. Nature 2025](https://www.nature.com/articles/s41586-025-08922-2)
 
 | Dataset | Genomes | Platform      |
 |---------|---------|---------------|
@@ -34,19 +34,22 @@ NA12877 is sequenced by IB-ONT but we used the assembly and data published in [D
 
 Check [SV calling](https://github.com/jiadong324/PanSV) for SV detection details. The callset can be viewed at UCSC track ([1KG Lin 1218](https://genome-test.gi.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=longReadVariants)) and gnomad-LR. 
 
+You can view the SVs from 1,218 genomes at [UCSC genome browser](https://genome-test.gi.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=longReadVariants).
+The official release of UCSC Browser and gnomAD-LR will come soon.
+
 ### Individual genomes
 
 Multiple caller merged callset for each genome. Please check the index file (TBA) for download.
 
 ### Integrated callset
 
-We provide both GRCh38 and T2T-CHM13 callsets (zenodo link, TBA) for 293 HPRC+HGSVC genomes and 1,218 genomes.
+We provide both GRCh38 and T2T-CHM13 callsets (10.5281/zenodo.22000872) for 293 HPRC+HGSVC genomes and 1,218 genomes.
 
-**CHM13_INSDEL_HGSVC_HPRC_wAF.vcf.gz:** Integrated SVs from HGSVC/HPRC genomes with estimated allele frequency.
+**CHM13_INSDEL_293_wAF.vcf.gz:** Integrated SVs from HGSVC/HPRC genomes with estimated allele frequency.
 
 **CHM13_INSDEL_1218_wAF.vcf.gz:** Integrated SVs from all dataset containing 1,218 genomes with estimated allele frequency.
 
-**GRCh38_INSDEL_HGSVC_HPRC_wAF.vcf.gz:** Integrated SVs from HGSVC genomes with estimated allele frequency.
+**GRCh38_INSDEL_293_wAF.vcf.gz:** Integrated SVs from HGSVC genomes with estimated allele frequency.
 
 **GRCh38_INSDEL_1218_wAF.vcf.gz:** Integrated SVs from all dataset containing 1,218 genomes with estimated allele frequency.
 
