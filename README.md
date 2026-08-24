@@ -42,7 +42,7 @@ Multiple caller merged callset for each genome. Please check the index file (TBA
 
 ### Integrated callset
 
-We provide both GRCh38 and T2T-CHM13 callsets (10.5281/zenodo.22000872) for 293 HPRC+HGSVC genomes and 1,218 genomes.
+We provide both GRCh38 and T2T-CHM13 callsets ([download](https://zenodo.org/records/22000872)) for 293 HPRC+HGSVC genomes and 1,218 genomes.
 
 **CHM13_INSDEL_293_wAF.vcf.gz:** Integrated SVs from HGSVC/HPRC genomes with estimated allele frequency.
 
