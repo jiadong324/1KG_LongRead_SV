@@ -38,7 +38,7 @@ The official release of UCSC Browser and gnomAD-LR will come soon.
 
 ### Individual genomes
 
-Multiple caller merged callset for each genome. Please check the index file (TBA) for download.
+Multiple caller merged callset for each genome ([HPRC](https://human-pangenomics.s3.amazonaws.com/index.html?prefix=submissions/759B21AD-0ED8-4640-A433-7C92A57EA3D3--UW_EEE_SV_Calls/))
 
 ### Integrated callset
 
