@@ -60,9 +60,9 @@ SV and TR related analysis scripts is in ```./SVs``` and ```./TR```, respectivel
 
 These two HPRC callsets are obtained from [Lucas et al.](https://www.biorxiv.org/content/10.64898/2026.07.21.739710v1) 
 
-1. HPRC-Linear ([download callset](https://human-pangenomics.s3.amazonaws.com/index.html?prefix=submissions/40399FDD-59DE-43D1-B3A3-DFF0C6E64FAC--YALE_VARIANT_CALLS_R2/samples/)), the SVs are detected against linear reference using multiple callers. 
+1. HPRC-Linear ([download](https://human-pangenomics.s3.amazonaws.com/index.html?prefix=submissions/40399FDD-59DE-43D1-B3A3-DFF0C6E64FAC--YALE_VARIANT_CALLS_R2/samples/)), the SVs are detected against linear reference using multiple callers. 
 The calling method is available at [hprc_release2_variant_calling](https://github.com/wwliao/hprc_release2_variant_calling). 
-2. HPRC-MC ([download callset](https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.wave.vcf.gz)), the SVs are detected from minigraph-cactus. 
+2. HPRC-MC ([download](https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.wave.vcf.gz)), the SVs are detected from minigraph-cactus. 
 
 Another graph-based callset (BI-ONT-Graph) is from Schloissnig et al. 2025 ([download callset](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1KG_ONT_VIENNA/release/v1.0/final-vcf/final-vcf.phased.vcf.gz))
 
@@ -71,9 +71,9 @@ SVs are normalized as biallelic representation and saved as separate VCF for fur
 
 ### Benchmarking callset
 
-HGSVC SVs ([download callset](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGSVC/release/Variant_Calls/1.0/)) detected against linear reference using multiple callers.
+HGSVC SVs ([download](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGSVC/release/Variant_Calls/1.0/)) detected against linear reference using multiple callers.
 
-HG002 SVs ([download callset](https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG002_NA24385_son/v5.0q/)) detected against linear reference using an independent approach different from HGSVC.
+HG002 SVs ([download](https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG002_NA24385_son/v5.0q/)) detected against linear reference using an independent approach different from HGSVC.
 
 ### Per-genome evaluation
 
@@ -92,7 +92,7 @@ We used the parameters suggested in https://ftp-trace.ncbi.nlm.nih.gov/Reference
 
 We compared two published graph-based callsets: 
 1. BI-ONT-Graph: Schloissnig et al. from 1,019 genomes.
-2. HPRC-MC built by Lucas et al.31 with 232 near-T2T assemblies. 
+2. HPRC-MC: Lucas et al. with 232 near-T2T assemblies. 
 
 SVs are converted to biallelic representation ```bcftools norm -m -any -f $ref_seq.fa -Ou input.vcf.gz | bcftools view -i 'abs(strlen(REF)-strlen(ALT)) >= 50' -Oz -o normalized.ge50bp.vcf.gz && bcftools index -t normalized.ge50bp.vcf.gz’``` 
 
