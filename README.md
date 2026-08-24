@@ -32,8 +32,7 @@ NA12877 is sequenced by BI-ONT but we used the assembly and data published in [D
 
 ## SV callset
 
-Check [SV calling](https://github.com/jiadong324/PanSV) for SV detection details. The callset can be viewed at UCSC track ([1KG Lin 1218](https://genome-test.gi.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=longReadVariants)) and gnomad-LR. 
-
+Check [SV calling](https://github.com/jiadong324/PanSV) for SV detection details. 
 You can view the SVs from 1,218 genomes at [UCSC genome browser](https://genome-test.gi.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=longReadVariants).
 The official release of UCSC Browser and gnomAD-LR will come soon.
 
