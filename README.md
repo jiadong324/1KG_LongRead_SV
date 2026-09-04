@@ -14,7 +14,7 @@ Comparably, the 1,019 BI-ONT genomes are sequenced in lower coverage and shorter
 
 ## Genomes
 
-The table below lists the source of 1,218 genomes used to create the callset in Lin et al (**coming soon**). 
+The table below lists the source of 1,218 genomes used to create the callset in [Lin et al](https://www.medrxiv.org/content/10.64898/2026.08.21.26361050v1). 
 Note that the number below counts for the unique genomes.
 The SVs detected from 1,218 genomes have been used to identify potential pathogenic variants and new SV-disease associations in biobanks.
 
